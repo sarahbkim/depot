@@ -44,4 +44,9 @@ class ProductTest < ActiveSupport::TestCase
     assert_equal "has already been taken", product.errors[:title].join('; ')
   end
 
+  test "product title must be at least 10 chars long" do
+    assert products(:ruby).valid?
+    assert products(:one).invalid?
+  end
+
 end
